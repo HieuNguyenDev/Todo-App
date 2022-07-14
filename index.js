@@ -17,6 +17,7 @@ function App() {
             <div className="wrapper">
                 <input
                     value={job}
+                    placeholder="Công việc hôm nay của bạn là gì?"
                     onChange={(e) => setJob(e.target.value)}
                 />
                 <button onClick={handleSubmit}>Thêm</button>                
