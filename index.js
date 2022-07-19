@@ -3,14 +3,28 @@ function App() {
     const { useState } = React;
     const [jobs, setJobs] = useState([]);
     const [job, setJob] = useState('');
-    console.log(job);
+    const [show, setShow] = useState(false)
+    
     const handleSubmit = () => {
         if (job === '') {
             alert('Vui lòng điền công việc của bạn!')
         } else {
+            setShow(true)
             setJobs(prev => [...prev, job]);
             setJob('')
         }
+    }
+
+    function ItemJob() {
+        return (
+            <ul>
+                {
+                    jobs.map((job, index) => (
+                        <li key={index}>{job}</li>
+                    ))
+                }
+            </ul>
+        )
     }
     return (
         <div className="container">
@@ -22,13 +36,7 @@ function App() {
                 />
                 <button onClick={handleSubmit}>Thêm</button>                
             </div>
-            <ul>
-                {
-                    jobs.map((job, index) => (
-                        <li key={index}>{job}</li>
-                    ))
-                }
-            </ul>
+            {show && <ItemJob />}
         </div>
     )
 }
